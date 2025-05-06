@@ -1,0 +1,204 @@
+/* styles.css */
+html,
+body {
+  height: 100%; /* Ensure html and body take full height */
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent body scrollbars */
+}
+/* Apply the game font */
+body {
+  font-family: "Press Start 2P", cursive;
+  overscroll-behavior: none; /* Prevent pull-to-refresh/scroll */
+  background-color: #1a202c; /* Darker background for the whole page */
+  color: #e2e8f0; /* Light text for body */
+  display: flex; /* Use flex for main layout */
+}
+/* Main container for game and instructions - Expand to fill */
+.game-container {
+  display: flex;
+  flex-direction: row; /* Default side-by-side layout */
+  gap: 1rem; /* Space between game and instructions */
+  width: 100%;
+  height: 100%; /* Fill body height */
+  padding: 1rem; /* Padding inside the container */
+  box-sizing: border-box; /* Include padding in dimensions */
+  align-items: stretch; /* Make children stretch to equal height */
+}
+/* Instructions Panel - Slightly adjusted */
+.instructions-panel {
+  background-color: #a0aec0; /* Lighter gray background */
+  color: #2d3748; /* Dark text color */
+  padding: 1rem;
+  border: 4px solid #4a5568; /* Border */
+  border-radius: 0.5rem; /* Rounded corners */
+  font-size: 0.65rem; /* Keep font size reasonable */
+  line-height: 1.3;
+  width: 280px; /* Slightly wider for better readability */
+  flex-shrink: 0; /* Prevent instructions from shrinking */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+.instructions-panel h3 {
+  font-size: 0.75rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 2px solid #4a5568;
+  padding-bottom: 0.4rem;
+  flex-shrink: 0; /* Prevent header from scrolling */
+}
+.instructions-panel h4 {
+  font-size: 0.7rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+}
+.instructions-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.instructions-panel li {
+  margin-bottom: 0.2rem;
+}
+.instructions-panel code {
+  background-color: #cbd5e0;
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 1.5em;
+  text-align: center;
+}
+.status-bar {
+  margin-top: auto; /* Push status bar to the bottom */
+  padding-top: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  border-top: 2px solid #4a5568;
+  font-size: 0.7rem;
+  flex-shrink: 0; /* Prevent status bar from scrolling */
+}
+/* Game screen area - Centers the <pre> tag */
+.game-screen-area {
+  flex-grow: 1; /* Allow game screen to take up more space */
+  display: flex;
+  justify-content: center; /* Center <pre> horizontally */
+  align-items: center; /* Center <pre> vertically */
+  flex-direction: column;
+  overflow: hidden; /* Hide overflow for the area itself */
+  height: 100%; /* Ensure it takes full height within container */
+  box-sizing: border-box;
+}
+/* Ensure pre tag respects whitespace and line breaks */
+pre#game-display {
+  /* Target specific pre tag */
+  white-space: pre;
+  font-family: monospace;
+  line-height: 1.2; /* Adjusted line height for bigger font */
+  font-size: 26px; /* Font size from previous step */
+  overflow: auto; /* Add scrollbars *within* the pre if map exceeds area */
+  background-color: #000000; /* Black background for contrast */
+  color: #cccccc; /* Default light gray text */
+  padding: 0.5rem; /* Adjust padding */
+  border-radius: 0.5rem;
+  border: 4px solid #666666; /* Medium gray border */
+  box-sizing: border-box;
+  display: inline-block; /* Needed for centering */
+  max-width: 100%;
+  max-height: 100%; /* Limit height to container */
+}
+
+/* --- Character Coloring --- */
+.player {
+  color: #ffff00;
+  font-weight: bold;
+} /* Bright Yellow */
+.goal {
+  color: #00ff00;
+  font-weight: bold;
+} /* Bright Green */
+.trap {
+  color: #ff4444;
+  font-weight: bold;
+} /* Bright Red */
+.wall {
+  color: #888888;
+} /* Medium Gray */
+.floor {
+  color: #444444;
+} /* Dark Gray */
+
+/* Message overlay style */
+#message-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+  color: white;
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem; /* Even larger message text */
+  padding: 2rem;
+  z-index: 10;
+}
+#message-overlay button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #5a6578; /* Slightly lighter button */
+  color: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-family: "Press Start 2P", cursive;
+}
+#message-overlay button:hover {
+  background-color: #4a5568; /* Darker hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  } /* Allow scrolling on small screens if needed */
+  .game-container {
+    flex-direction: column-reverse; /* Stack vertically, instructions on bottom */
+    height: auto; /* Allow container to grow */
+    min-height: 100vh; /* Ensure it still tries to fill height */
+    padding: 0.5rem; /* Reduce padding */
+    gap: 0.5rem;
+  }
+  .instructions-panel {
+    width: 100%; /* Full width */
+    max-height: 40vh; /* Limit height */
+    font-size: 0.6rem; /* Smaller font on mobile */
+  }
+  .instructions-panel h3 {
+    font-size: 0.7rem;
+  }
+  .instructions-panel h4 {
+    font-size: 0.65rem;
+  }
+  .status-bar {
+    font-size: 0.65rem;
+  }
+
+  .game-screen-area {
+    width: 100%;
+    min-height: 50vh; /* Ensure game area has decent height */
+  }
+  pre#game-display {
+    font-size: 18px; /* Adjust font size for mobile */
+    line-height: 1.15; /* Adjust line height for mobile */
+    padding: 0.25rem;
+  }
+}

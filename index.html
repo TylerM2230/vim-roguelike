@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vim Roguelike Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="instructions-panel">
+        <h3>-- Controls --</h3>
+        <div>
+          <h4>Movement</h4>
+          <ul>
+            <li><code>h</code> : Left</li>
+            <li><code>j</code> : Down</li>
+            <li><code>k</code> : Up</li>
+            <li><code>l</code> : Right</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Diagonals</h4>
+          <ul>
+            <li><code>y</code> : Up-Left</li>
+            <li><code>u</code> : Up-Right</li>
+            <li><code>b</code> : Down-Left</li>
+            <li><code>n</code> : Down-Right</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Jumps</h4>
+          <ul>
+            <li><code>w</code> : Fwd 3</li>
+            <li><code>e</code> : Fwd 3</li>
+            <li><code>B</code> : Back 3</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Objective</h4>
+          <ul>
+            <li><span class="player">@</span> : You</li>
+            <li><span class="goal">&gt;</span> : Exit</li>
+            <li><span class="trap">X</span> : Trap</li>
+            <li><span class="wall">#</span> : Wall</li>
+            <li><span class="floor">.</span> : Floor</li>
+          </ul>
+        </div>
+        <div class="status-bar">
+          <span id="level-display">Level: 1</span> |
+          <span id="status-message"></span>
+        </div>
+      </div>
+
+      <div class="game-screen-area">
+        <pre id="game-display"></pre>
+      </div>
+    </div>
+    <div id="message-overlay">
+      <div id="message-content">
+        <p id="message-text"></p>
+        <button id="restart-button">Restart</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
