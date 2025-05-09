@@ -2,7 +2,7 @@
 
 A simple browser-based roguelike game where the player navigates a procedurally generated maze using Vim-like keybindings. The objective is to reach the goal ('>') while avoiding traps ('X'). Each level presents a new maze layout.
 
-![screenshot of site](./vim-rougelike.png)
+![vim-roguelike](https://github.com/user-attachments/assets/bf3a802c-0702-4b86-a072-5ed055f5b1ba)
 
 ## Table of Contents
 
